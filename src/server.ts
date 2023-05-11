@@ -1,15 +1,13 @@
 import express from "express";
+import mongoose from "mongoose";
+import routes from "./routes";
 
 const app = express();
 
-app.use(express.json());
+mongoose.connect("mongodb://localhost/basic-api");
 
-app.get("/", (req, res) => {
-  res.json({
-    id: "123sd",
-    name: "João Küster",
-  });
-});
+app.use(express.json());
+app.use(routes);
 
 app.listen(3000, () =>
   console.log("Server up and running on http://localhost:3000")
